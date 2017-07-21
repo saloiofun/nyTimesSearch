@@ -1,11 +1,15 @@
 $(document).ready(function() {
 
+	$("#resultPanel").hide();
+
 	$("#clearAll").on("click", function () {
 		$("#search-result").empty();
+		$("#resultPanel").hide();
 	});
 
 	$("#search").on("click", function (event) {
 
+		$("#resultPanel").show();
 		$("#search-result").empty();
 		
 		event.preventDefault();
@@ -23,14 +27,13 @@ $(document).ready(function() {
 		});
 		parseInt(startYear) ? url += "&begin_date=" + startYear + "0101" : url;
 		parseInt(endYear) ? url += "&end_date=" + endYear + "1231" : url;
-		
+
 		$.ajax({
 			url: url,
 			method: 'GET',
 		}).done(function(result) {
 
 			var results = result.response.docs;
-			console.log(url);
 
 			for (var i = 0; i < limit; i++) {
 				var container = $("<div id=\"rowResult\" class=\"well\">");
@@ -44,10 +47,7 @@ $(document).ready(function() {
 				container.append(sectionName);
 				container.append(articleURL);		
 
-				container.append("<hr>");
-
 				$("#search-result").append(container);
-
 			}
 		});
 	});
