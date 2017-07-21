@@ -12,23 +12,25 @@ $(document).ready(function() {
 
 		var input = $("#search-input").val().trim();
 		var limit = $("#search-limit").val();
-		var startYear = $("#search-startYear").val().trim() + "0101";
-		var endYear = $("#search-endYear").val().trim() + "0101";
+		var startYear = $("#search-startYear").val().trim();
+		var endYear = $("#search-endYear").val().trim();
 
 		var apiKey = "363a9df561ad4ff38619a427376c4648";
 		var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 		url += '?' + $.param({
 			'api-key': apiKey,
-			'q' : input, 
-			'begin_date' : startYear,
-			'end_date' : endYear 
+			'q' : input
 		});
+		parseInt(startYear) ? url += "&begin_date=" + startYear + "0101" : url;
+		parseInt(endYear) ? url += "&end_date=" + endYear + "1231" : url;
+		
 		$.ajax({
 			url: url,
 			method: 'GET',
 		}).done(function(result) {
 
 			var results = result.response.docs;
+			console.log(url);
 
 			for (var i = 0; i < limit; i++) {
 				var container = $("<div id=\"rowResult\" class=\"well\">");
@@ -45,7 +47,6 @@ $(document).ready(function() {
 				container.append("<hr>");
 
 				$("#search-result").append(container);
-
 
 			}
 		});
