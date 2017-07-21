@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 			var results = result.response.docs;
 
-			for (var i = 0; i < parseInt(limit); i++) {
+			for (var i = 0; i < limit; i++) {
 				var container = $("<div id=\"rowResult\" class=\"well\">");
 				var title = $("<h3>").text(results[i].headline.main);
 				var pubDate = $("<p>").text(results[i].pub_date.slice(0,10));
