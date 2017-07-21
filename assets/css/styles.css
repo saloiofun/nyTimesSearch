@@ -1,0 +1,24 @@
+.well-header .well{
+	color: #fff;
+	background-color: #253559;
+}
+.panel-primary {
+	border-color: #253559;
+}
+.panel-primary > .panel-heading {
+	border-color: #253559;
+	background-color: #253559;
+}
+.btn-primary {
+	color: #fff;
+	background-color: #798c8e;
+	border-color: #798c8e;
+}
+.btn-primary:hover {
+	color: #fff;
+	background-color: #253559;
+	border-color: #253559;
+}
+.label-primary {
+	background-color: #253559;
+}
